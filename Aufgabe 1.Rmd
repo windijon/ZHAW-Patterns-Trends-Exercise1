@@ -102,3 +102,19 @@ ggplot(mcp, aes(colour = TierID)) +
 
 ```
 
+
+Input III: Importing raster data
+
+```{r}
+
+library(terra)
+  
+pk100_BE <- terra::rast("pk100_BE.tif")
+pk100_BE
+
+plot(pk100_BE)
+
+plotRGB(pk100_BE)
+
+```
+
