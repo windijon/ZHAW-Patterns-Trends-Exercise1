@@ -25,3 +25,37 @@ ggplot(Wildschwein_Daten, aes(Long, Lat, colour = TierID)) +
   geom_point()
 
 ```
+
+
+Input: Handling spatial data
+
+```{r}
+
+library(sf)
+
+wildschwein_BE_sf <- st_as_sf(Wildschwein_Daten, 
+                              coords = c("Long", "Lat"), 
+                              crs = 4326)
+
+Wildschwein_Daten
+
+wildschwein_BE_sf
+
+is.data.frame(wildschwein_BE_sf) # -> [1] TRUE
+
+# subset rows
+wildschwein_BE_sf[1:10,]
+wildschwein_BE_sf[wildschwein_BE_sf$TierName == "Sabi",]
+
+# subset colums
+wildschwein_BE_sf[,2:3]
+
+wildschwein_BE <- st_as_sf(Wildschwein_Daten, 
+                          coords = c("Long", "Lat"), 
+                          crs = 4326)
+
+rm(wildschwein_BE_sf) 
+# we can remove this sf object, since it just eats up our memory
+
+```
+
