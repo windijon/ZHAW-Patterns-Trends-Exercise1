@@ -5,3 +5,14 @@ date: '2022-04-22'
 output: beamer_presentation
 ---
 
+
+Task 1: Import data
+
+```{r}
+
+library(readr)        # to import tabular data (e.g. csv)
+library(dplyr)        # to manipulate (tabular) data
+library(ggplot2)      # to visualize data
+
+```
+
