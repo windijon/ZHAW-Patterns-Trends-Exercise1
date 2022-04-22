@@ -79,11 +79,26 @@ Input II: Calculate Convex Hull
 wildschwein_BE_grouped <- group_by(wildschwein_BE,TierID)
 wildschwein_BE_grouped
 
-wildschwein_BE_smry <- summarise(wildschwein_BE_grouped)
+wildschwein_BE_sample <- sample_n(wildschwein_BE_grouped, 2000)
+
+wildschwein_BE_smry <- summarise(wildschwein_BE_sample)
 wildschwein_BE_smry
 
 mcp <- st_convex_hull(wildschwein_BE_smry)
 mcp
+
+```
+
+
+Task 4: Ploting spatial objects
+
+```{r}
+
+plot(mcp)
+
+ggplot(mcp, aes(colour = TierID)) +
+  geom_sf() +
+  coord_sf(datum =2056)
 
 ```
 
