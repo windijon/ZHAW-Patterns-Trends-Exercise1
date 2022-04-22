@@ -16,3 +16,12 @@ library(ggplot2)      # to visualize data
 
 ```
 
+
+Task 2: Explore Data
+
+```{r}
+
+ggplot(Wildschwein_Daten, aes(Long, Lat, colour = TierID)) +
+  geom_point()
+
+```
