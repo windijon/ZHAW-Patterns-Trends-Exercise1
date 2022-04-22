@@ -59,3 +59,12 @@ rm(wildschwein_BE_sf)
 
 ```
 
+
+Task 3: Project data from WGS84
+
+```{r}
+
+st_transform(x = wildschwein_BE, crs =  2056)
+
+```
+
