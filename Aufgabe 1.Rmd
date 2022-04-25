@@ -30,17 +30,17 @@ ggplot(Wildschwein_Daten, aes(Long, Lat, colour = TierID)) +
 ```
 
 
-Input I: Handling spatial data
+Input I: Handling spatial data (Tabelle in Spatial Object umwandeln)
 
 ```{r}
 
 library(sf)
 
-wildschwein_BE_sf <- st_as_sf(Wildschwein_Daten, 
+wildschwein_BE_sf <- st_as_sf(Wildschwein_Daten,             # Tabelle in Spatial Object umwandeln
                               coords = c("Long", "Lat"), 
                               crs = 4326)
 
-Wildschwein_Daten
+View(Wildschwein_Daten)
 
 wildschwein_BE_sf
 
@@ -72,7 +72,7 @@ st_transform(x = wildschwein_BE, crs =  2056)
 ```
 
 
-Input II: Calculate Convex Hull
+Input II: Calculate Convex Hull (aus Punktwolke Polygone machen)
 
 ```{r}
 
@@ -103,7 +103,7 @@ ggplot(mcp, aes(colour = TierID)) +
 ```
 
 
-Input III: Importing raster data
+Input III: Importing raster data (import swisstopo-Map)
 
 ```{r}
 
@@ -115,6 +115,24 @@ pk100_BE
 plot(pk100_BE)
 
 plotRGB(pk100_BE)
+
+```
+
+
+Task 5: Adding a background map (Karte und Wildschwein-Daten zusammen plotten)
+
+```{r}
+
+library(tmap)
+
+map1 <- tm_shape(shp = pk100_BE) + 
+  tm_rgb() +
+  
+  # add wild-boar data
+  tm_shape(shp = mcp) +
+  tm_polygons("TierID", border.col = "black", lwd = 1.5, alpha = 0.4)    # alpha = transparency
+
+map1
 
 ```
 
