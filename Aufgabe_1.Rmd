@@ -2,7 +2,10 @@
 title: "Aufgabe_1"
 author: "windijon"
 date: '2022-04-22'
-output: beamer_presentation
+output:
+  slidy_presentation: default
+  beamer_presentation: default
+  ioslides_presentation: default
 ---
 
 
